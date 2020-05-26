@@ -11,18 +11,19 @@
         <p class="lead">Es gibt immer was zu tun...</p>
       </div>
       
-      <form>
+      <form action="" method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="date">Fälligkeitsdatum</label>
-          <input type="date" class="form-control" id="date" name="date" value="2020-05-14">
+          <input type="date" class="form-control" id="date" name="date" value="">
         </div>
         <div class="form-group">
           <label for="description">Beschreibung</label>
-          <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          <textarea class="form-control" id="description" name="description" rows="3" maxlength="160"></textarea>
         </div>
         <div class="form-group">
           <label for="percentdone">Bereits erledigt</label>
-          <input type="range" class="form-control-range" id="percentdone" name="percentdone" value="50">
+          <input type="range" class="form-control-range" id="percentdone" name="percentdone" value="0">
         </div>
         <button type="submit" class="btn btn-primary">Hinzufügen</button>
       </form>
