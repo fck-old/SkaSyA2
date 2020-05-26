@@ -15,92 +15,34 @@
       <!-- Flexbox -->
       <div class="d-flex justify-content-center flex-wrap">
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 12. Mai 2020</h5>
-            <p class="card-text">Eierkuchen machen</p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 13. Mai 2020</h5>
-            <p class="card-text">In der Hängematte liegen</p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
+        {% if todo_list %}
+            {% for todo in todo_list %}
+                <div class="card m-2 m-lg-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Fällig bis: {{ todo.due_date.date }} - {{ todo.due_date.time}} Uhr</h5>
+                    <p class="card-text">{{ todo.description }}</p>
+                    
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar"
+                        style="width: {{ todo.percent }}%;" aria-valuenow="{{ todo.percent }}"
+                        aria-valuemin="0" aria-valuemax="100">{{ todo.percent }}%
+                      </div>
+                    </div><br>
+                    
+                    <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
+                    <a class="btn btn-danger btn-sm" href="#">Löschen</a>
+                  </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nichts zu tun 🎉</p>
+        {% endif %}
+
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 13. Mai 2020</h5>
-            <p class="card-text">
-              Ich schreibe bis zu 160 Zeichen, das heißt, dass hier schon einiges an Text stehen kann,
-              sodass ich mit dem Platz doch wahrscheinlich etwas haushalten müsste.
-            </p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 14. Mai 2020</h5>
-            <p class="card-text">Beispielseite mit dem Bootstrap Framework anlegen</p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 01. Januar 1970</h5>
-            <p class="card-text">System auf 64 Bit umstellen</p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
         
-        <div class="card m-2 m-lg-3">
-          <div class="card-body">
-            <h5 class="card-title">Fällig bis: 05. August 2025</h5>
-            <p class="card-text">Studium abschließen</p>
-            
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 23%;" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100">23%</div>
-            </div><br>
-            
-            <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' %}">Bearbeiten</a>
-            <a class="btn btn-danger btn-sm" href="#">Löschen</a>
-          </div>
-        </div>
         
       </div>
     </div>

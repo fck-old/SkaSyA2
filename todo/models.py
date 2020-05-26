@@ -6,7 +6,7 @@ from django.utils import timezone
 class ToDo(models.Model):
     due_date = models.DateTimeField()
     description = models.CharField(max_length=160)
-    percent = models.FloatField()
+    percent = models.IntegerField()
     
     def __str__(self):
         return self.description
