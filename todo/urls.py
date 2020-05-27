@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('new', views.new, name='new'),
     path('edit/<int:pk>/', views.edit, name='edit'),
-    path('<int:pk>/delete', views.delete, name='delete'),
+    path('delete/<int:pk>', views.delete, name='delete'),
     #path('edit', views.edit, name='edit'),
     path('imprint', views.imprint, name='imprint'),
 ]
