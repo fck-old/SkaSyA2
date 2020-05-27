@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 from django.utils import timezone
@@ -53,6 +53,12 @@ def edit(request, pk):
             'todo.id':pk
         }  
         return render(request, 'todo/edit.html', context) #HttpResponseRedirect(reverse('todo:edit')) #HttpResponse('could not find todo for this id') 
+
+def delete(request, pk):
+    todo = get_object_or_404(ToDo, id=pk)
+    todo.delete()
+    return HttpResponseRedirect(reverse('todo:index'))
+
 
 def imprint(request):
     return render(request, 'todo/imprint.html')

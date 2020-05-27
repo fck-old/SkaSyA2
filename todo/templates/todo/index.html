@@ -24,9 +24,11 @@
                         aria-valuemin="0" aria-valuemax="100">{{ todo.percent }}%
                       </div>
                     </div><br>
-                    
-                    <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' todo.id%}">Bearbeiten</a>
-                    <a class="btn btn-danger btn-sm" href="#">Löschen</a>
+                    <form action="" method="post">
+                      {% csrf_token %}
+                      <a class="btn btn-warning btn-sm" href="{% url 'todo:edit' todo.id%}">Bearbeiten</a>
+                      <a type="submit" class="btn btn-danger btn-sm" href="{% url 'todo:delete' todo.id%}">Löschen</a>
+                    </form>
                   </div>
                 </div>
             {% endfor %}
