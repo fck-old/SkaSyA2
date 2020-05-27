@@ -29,7 +29,7 @@
           <textarea class="form-control" id="description" name="description" rows="3" maxlength="160">{{ description }}</textarea>
         </div>
         <div class="form-group">
-          <label for="percentdone">Bereits erledigt</label>
+          <label for="percentdone">Bereits erledigt:</label><span id="percent-label">... updating ...</span>
           <input type="range" class="form-control-range" id="percentdone" name="percentdone" value="{{ percent }}">
         </div>
         <button type="submit" class="btn btn-primary">Hinzufügen</button>

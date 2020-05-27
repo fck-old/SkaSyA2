@@ -7,4 +7,10 @@ $(document).ready(function() {
             ":" + ("0" + d.getMinutes()).slice(-2)
         );
     });
+    
+    $("#percentdone").change(function(event) {
+        $("#percent-label").text(event.target.value + "%");
+    });
+    
+    $("#percent-label").text($("#percentdone").val() + "%");
 });
