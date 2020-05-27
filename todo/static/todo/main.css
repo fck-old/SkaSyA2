@@ -11,3 +11,17 @@ html {
 .card {
     width: 400px;
 }
+
+#button-now {
+    height: 20px;
+    font-size: 10px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#percent-label {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #555555;
+}
