@@ -11,15 +11,29 @@
         <p class="lead"></p>
       </div>
       
+      {% if error %}
+        <div class="alert alert-danger" role="alert">
+          <strong>Fehler!</strong> Etwas vergessen?
+        </div>
+      {% endif %}
+      
       <form action="" method="post">
         {% csrf_token %}
         <div class="form-group">
           <label for="date">Fälligkeitsdatum</label>
-          <input type="datetime-local" class="form-control" id="datetime" name="date" value="{{ due_date|date:'Y-m-d' }}T{{ due_date|date:'H:i' }}">
+          
+          {% comment "Achtung super eklig!" %}
+          {% endcomment %}
+          
+          {% if error %}
+            <input type="datetime-local" class="form-control" id="datetime" name="date" value="{{ due_date }}">
+          {% else %}
+            <input type="datetime-local" class="form-control" id="datetime" name="date" value="{{ due_date|date:'Y-m-d' }}T{{ due_date|date:'H:i' }}">
+          {% endif %}
         </div>
         <div class="form-group">
           <label for="description">Beschreibung</label>
-          <textarea class="form-control" id="description" name="description" rows="3" maxlength="160"> {{ description }}</textarea>
+          <textarea class="form-control" id="description" name="description" rows="3" maxlength="160">{{ description }}</textarea>
         </div>
         <div class="form-group">
           <label for="percentdone">Bereits erledigt</label>
