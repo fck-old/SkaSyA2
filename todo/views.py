@@ -10,6 +10,7 @@ from .models import ToDo
 class IndexView(generic.ListView):
     model = ToDo
     template_name = 'todo/index.html'
+    ordering = ['-pk']
 
 def new(request):
     if request.method == 'POST':
